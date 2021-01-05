@@ -120,14 +120,28 @@ function handleDragOver(event)
   event.stopPropagation();
   event.preventDefault();
   event.dataTransfer.dropEffect = "move";
+
+  writeOnElement("file-label", "Solte aqui !");
 }
 
 function handleDragLeave(event) 
 {
   console.log("drag leave");
+
+  writeOnElement("file-label", "<strong>Escolha os arquivos</strong> ou solte-os aqui.");
 }
 
 function handleDragEnter(event) 
 {
   console.log("Drag enter");
+
+  writeOnElement("file-label", "Solte aqui !");
+}
+
+function writeOnElement(id, content)
+{
+  const element = document.getElementById(id);
+
+  if (element.innerHTML === content) return
+  element.innerHTML = content;
 }
